@@ -1,45 +1,21 @@
-pipeline{
+pipeline {
+    agent any
 
-agent{
-
-docker {
-
-image 'maven:3-alpine'
-
-args '-v /root/.m2:/root/.m2'
-
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
-
-}
-
-stages{
-
-stage('unittests'){
-
-steps{
-
-sh 'mvn test'
-
-}}
-
-stage('mutation tests'){
-
-steps{
-
-sh 'mvn org.pitest:pitest-maven:mutationCoverage'
-
-}
-
-post{
-
-always {
-
-junit 'target/surefire-reports/*.xml'
-
-}
-
-}
-
-}}
-
-} 
