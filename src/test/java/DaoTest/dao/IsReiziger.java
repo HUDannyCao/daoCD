@@ -5,6 +5,7 @@ import org.mockito.ArgumentMatcher;
 
 public class IsReiziger implements ArgumentMatcher<Reiziger>{
 
+	// nieuwe shit
 	public boolean matches(Reiziger r1) {
 		if(r1 instanceof Reiziger) {
 			return true;
